@@ -1,0 +1,40 @@
+import java.util.*;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.util.Scanner;
+
+public class stuff {
+
+	public static void main(String[] args) throws IOException {
+		Double height, we, bmi;
+		System.out.println("hey man");
+		Scanner scan = new Scanner(System.in);
+
+		File file = new File("measurements.txt");
+		write(file, scan.nextLine());
+	
+
+		System.out.println("enter height");
+		height = scan.nextDouble();
+
+		System.out.println("enter weight");
+		we = scan.nextDouble();
+
+		bmi = (height / (we * we));
+		System.out.println(bmi);
+		write(file, "" + bmi);
+		write(file, "weight" + we);
+		write(file, "height" + height);
+	}
+		
+		public static void write(File file, String text) throws IOException{
+			PrintWriter writer = new PrintWriter(new FileWriter(file, true));
+			writer.write(text + "\r\n");
+			writer.flush();
+			writer.close();
+		}
+	
+}
